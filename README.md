@@ -89,9 +89,12 @@ ___
 
 ### 2. OtpinDialogCreator
 
+![Image Sample1](https://drive.google.com/file/d/1HUDFv9vAqF4empGn9VHoIDIJXo9rrFJ_/view?usp=drivesdk)
+
+
 ```kotlin
   
-  // Operations that can be done on the dialog
+  // All operations that can be done on the dialog
   
   otpDialog = OtpinDialogCreator.with(this)
             //.title(title)
