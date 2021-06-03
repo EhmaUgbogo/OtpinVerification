@@ -81,8 +81,8 @@ ___
   // Operations that can be done on the dialog
   
   otpDialog = OtpinDialogCreator.with(this)
-            .title(title)
-            .customSubtitle("Please provide your card cvv")
+            //.title(title)
+            //.customSubtitle("Please provide your card cvv")
             .customBtnText("Submit")
             //.logo(R.drawable.ic_logo)
             .cancelable(false)
