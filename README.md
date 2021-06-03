@@ -33,7 +33,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.EhmaUgbogo:OtpinVerification:1.0'
+    implementation 'com.github.EhmaUgbogo:OtpinVerification:1.0.0'
 }
 ```
 ___
