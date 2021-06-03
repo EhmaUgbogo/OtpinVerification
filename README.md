@@ -120,7 +120,7 @@ ___
 
 
 ### Styling Used Underneath
-OtpinDialogCreator uses the following attr and styles under the hood that you can easily replace yours with
+OtpinDialogCreator uses the following attr and styles under the hood with values that you can easily adjut to suit your brand
 
 ```xml
     <!-- TextAppearance-->
@@ -153,6 +153,7 @@ OtpinDialogCreator uses the following attr and styles under the hood that you ca
 
 ### Styling Yours
 So to style yours simply extend any of the styles above or supply yours.
+
 for example to change the title font & size, see yourTitleAppearance below.
 
 
