@@ -144,6 +144,9 @@ OtpinDialogCreator uses the following attr and styles under the hood that you ca
     <!-- Toolbar -->
     <item name="otpDialogToolbarColor">@color/otp_color_toolbar</item>
     <item name="otpDialogToolbarIconColor">@color/otp_color_toolbar_icon</item>
+    <!-- Layout -->
+    <item name="otpDialogLayoutPadding">4dp</item>
+    <item name="otpDialogLayoutCornerRadius">16dp</item>
   
 ```
 
