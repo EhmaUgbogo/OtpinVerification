@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <public /> // Make all resource private
+
+
+    <!-- Box Styling -->
+
+    <!-- TextInputLayout-->
+    <style name="BoxStyle.Outline" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="hintAnimationEnabled">true</item>
+        <item name="hintEnabled">false</item>
+        <item name="errorEnabled">false</item>
+        <item name="boxStrokeWidth">?otpDialogBoxStrokeWidth</item>
+        <item name="boxStrokeWidthFocused">?otpDialogBoxStrokeWidthFocused</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="shapeAppearanceOverlay">?attr/otpDialogBoxShape</item>
+        <!--<item name="editTextStyle">@style/TextInputBoxEditText</item>--> <!--Not working. Use textAppearance on specific editText-->
+        <item name="android:maxEms">1</item>
+        <item name="android:maxLength">1</item>
+    </style>
+
+    <style name="BoxStyle.Underline" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="hintAnimationEnabled">true</item>
+        <item name="hintEnabled">false</item>
+        <item name="errorEnabled">false</item>
+        <item name="boxStrokeWidth">?otpDialogBoxStrokeWidth</item>
+        <item name="boxStrokeWidthFocused">?otpDialogBoxStrokeWidthFocused</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="shapeAppearanceOverlay">?attr/otpDialogBoxShape</item>
+        <!--<item name="editTextStyle">@style/TextInputBoxEditText</item>--> <!--Not working. Use textAppearance on specific editText-->
+        <item name="android:maxEms">1</item>
+        <item name="android:maxLength">1</item>
+    </style>
+
+    <!--  EditText style for TextInputLayout-->
+    <style name="BoxEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <!-- TextInputLayout ShapeAppearanceOverlay -->
+    <style name="BoxShapeAppearanceOverlay.Normal" parent=""/>
+
+    <style name="BoxShapeAppearanceOverlay.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50dp</item>
+    </style>
+    <style name="BoxShapeAppearanceOverlay.Cut" parent="">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+
+
+
+
+    <!-- TextAppearance -->
+    <style name="OtpDialogTitleAppearance" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/otp_title_color</item>
+        <item name="android:textSize">22sp</item>
+        <item name="fontFamily">@font/montserrat_black</item>
+    </style>
+
+    <style name="OtpDialogSubTitleAppearance" parent="OtpDialogTitleAppearance">
+        <item name="android:textColor">@color/otp_subtitle_color</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
+    </style>
+
+    <style name="OtpDialogCounterTextAppearance" parent="OtpDialogSubTitleAppearance">
+        <item name="android:textColor">@color/otp_title_color</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="OtpDialogResendTextAppearance" parent="OtpDialogTitleAppearance">
+        <item name="android:textColor">?colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
+    </style>
+
+
+
+
+    <!-- Button-->
+    <style name="OtpDialogButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">6dp</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:text">@string/continuee</item>
+        <item name="android:enabled">false</item>
+    </style>
+
+    <style name="OtpDialogButtonStyle.Round">
+        <item name="cornerRadius">45dp</item>
+    </style>
+
+
+
+
+
+
+
+
+    <!-- Dialog -->
+    <style name="OtpDialogBaseTheme" parent="Theme.MaterialComponents.DayNight.Dialog">
+
+        <!-- Define color properties as desired -->
+        <item name="colorPrimaryDark">@color/otp_color_status_bar</item>
+        <item name="colorPrimary">@color/otp_color_primary</item>
+        <item name="colorAccent">@color/otp_color_widget_active</item>
+        <item name="actionMenuTextColor">@color/otp_color_widget_active</item>-->
+
+        <!-- Define window properties as desired -->
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@color/otp_window_background_color</item>
+        <!--<item name="android:windowNoTitle">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>-->
+
+        <!-- windowEnterAnimation -->
+
+    </style>
+
+    <!-- windowEnterAnimation -->
+    <style name="SlideUp">
+        <item name="android:windowEnterAnimation">@anim/slide_up_anim</item>
+        <item name="android:windowExitAnimation">@anim/slide_down_anim</item>
+    </style>
+
+
+
+
+
+
+
+
+</resources>

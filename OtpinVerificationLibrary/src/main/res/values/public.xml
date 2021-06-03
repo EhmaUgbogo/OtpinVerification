@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<public name="app_name" type="string"/>
+    <public name="verification" type="string"/>-->
+
+
+
+    <!-- TextInputLayout ShapeAppearanceOverlay --> BoxShape
+    <style name="OtpBoxShape.Normal" parent="BoxShapeAppearanceOverlay.Normal"/>
+    <style name="OtpBoxShape.Rounded" parent="BoxShapeAppearanceOverlay.Rounded"/>
+    <style name="OtpBoxShape.Cut" parent="BoxShapeAppearanceOverlay.Cut"/>
+
+    <style name="OtpDialogTheme" parent="OtpDialogBaseTheme">
+        <!-- TextAppearance-->
+        <item name="otpDialogTitleTextAppearance">@style/OtpDialogTitleAppearance</item>
+        <item name="otpDialogSubtitleTextAppearance">@style/OtpDialogSubTitleAppearance</item>
+        <item name="otpDialogCounterTextAppearance">@style/OtpDialogCounterTextAppearance</item>
+        <item name="otpDialogResendTextAppearance">@style/OtpDialogResendTextAppearance</item>
+
+        <!-- Box Setup -->
+        <item name="otpDialogBoxWidth">48dp</item>
+        <item name="otpDialogBoxHeight">48dp</item>
+        <item name="otpDialogBoxStrokeWidth">1dp</item>
+        <item name="otpDialogBoxStrokeWidthFocused">2dp</item>
+        <item name="otpDialogBoxSpacing">8dp</item>
+        <item name="otpDialogBoxStyle">@style/BoxStyle.Outline</item> <!-- BoxStyle.Outline, BoxStyle.Underline-->
+
+        <!-- Box ShapeAppearance-->
+        <item name="otpDialogBoxShape">@style/OtpBoxShape.Normal</item> <!--Normal, Rounded, Cut - Only works for BoxStyle.Outline-->
+
+        <!-- Box EditText Style-->
+        <item name="otpDialogBoxEditTextStyle">@style/BoxEditTextStyle</item>
+
+        <!-- Button Style-->
+        <item name="otpDialogButtonStyle">@style/OtpDialogButtonStyle.Round</item>
+
+        <!-- Toolbar -->
+        <item name="otpDialogToolbarColor">@color/otp_color_toolbar</item>
+        <item name="otpDialogToolbarIconColor">@color/otp_color_toolbar_icon</item>
+
+        <!-- Layout -->
+        <item name="otpDialogLayoutPadding">4dp</item>
+        <item name="otpDialogLayoutCornerRadius">16dp</item>
+
+    </style>
+
+
+
+</resources>

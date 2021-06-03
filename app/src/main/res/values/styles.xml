@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="OtpStyle" parent="OtpDialogTheme">
+        <item name="colorPrimaryDark">?colorPrimaryVariant</item>
+        <item name="colorAccent">?colorSecondary</item>
+
+        <!-- v23 Dark status bar icon-->
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item> <!--Dark status bar icon-->
+        <item name="android:statusBarColor" tools:targetApi="M">?attr/colorOnPrimarySurface</item>
+
+
+    </style>
+</resources>

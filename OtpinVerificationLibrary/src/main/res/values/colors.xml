@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purpl_200">#FFBB86FC</color>
+    <color name="purpl_500">#FF6200EE</color>
+    <color name="purpl_700">#FF3700B3</color>
+
+    <color name="green">#19B832</color>
+    <color name="red">#B83619</color>
+
+
+
+    <!-- Here you can add color of your choice  -->
+    <color name="otp_color_status_bar">@color/purpl_700</color>
+    <color name="otp_color_toolbar">@color/purpl_500</color>
+    <color name="otp_color_toolbar_icon">#212325</color>
+    <color name="otp_color_primary">@color/purpl_500</color>
+    <color name="otp_color_widget_active">@color/purpl_200</color>
+    <color name="otp_title_color">#212325</color>
+    <color name="otp_subtitle_color">#6E6E70</color>
+    <color name="otp_window_background_color">@android:color/white</color>
+
+</resources>

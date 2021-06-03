@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OtpDialog">
+        <!-- TextViews TextAppearance-->
+        <attr name="otpDialogTitleTextAppearance" format="reference" />
+        <attr name="otpDialogSubtitleTextAppearance" format="reference" />
+        <attr name="otpDialogCounterTextAppearance" format="reference" />
+        <attr name="otpDialogResendTextAppearance" format="reference" />
+
+        <!-- Button styles -->
+        <attr name="otpDialogButtonStyle" format="reference" />
+
+        <!-- Toolbar color reference -->
+        <attr name="otpDialogToolbarColor" format="reference|color" />
+        <attr name="otpDialogToolbarIconColor" format="reference|color" />
+
+        <!-- TextInputLayout shapeAppearanceOverlay-->
+        <attr name="otpDialogBoxShape" format="reference|color" />
+
+        <!-- TextInputLayout -->
+        <attr name="otpDialogBoxStyle" format="reference" />
+
+        <attr name="otpDialogBoxSpacing" format="dimension" />
+        <attr name="otpDialogBoxWidth" format="dimension" />
+        <attr name="otpDialogBoxHeight" format="dimension" />
+        <attr name="otpDialogBoxStrokeWidth" format="dimension" />
+        <attr name="otpDialogBoxStrokeWidthFocused" format="dimension" />
+
+        <!-- EditText -->
+        <attr name="otpDialogBoxEditTextStyle" format="reference" />
+
+        <!-- Layout -->
+        <attr name="otpDialogLayoutPadding" format="dimension" />
+        <attr name="otpDialogLayoutCornerRadius" format="dimension" />
+
+
+
+        <!--<attr name="otpDialogTitleTextFontFamily" format="string" />
+        <attr name="otpDialogTitleText" format="reference|string" />
+        <attr name="otpDialogTitleTextSize" format="reference|dimension" />
+        <attr name="otpDialogTitleTextColor" format="reference|color" />
+        <attr name="otpDialogSubTextFontFamily" format="string" />
+        <attr name="otpDialogSubTextSize" format="reference|dimension" />
+        <attr name="otpDialogSubTextColor" format="reference|color" />
+
+        <attr name="otpDialogContinueBtnFont" format="string" />-->
+
+
+
+
+
+
+    </declare-styleable>
+</resources>

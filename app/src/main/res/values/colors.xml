@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#f186c0</color>
+    <color name="purple_500">#ef0078</color>
+    <color name="purple_700">#c7006e</color>
+    <color name="teal_200">#ffc77d</color>
+    <color name="teal_700">#f47100</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    // Otp Dialog overriding colors
+    <color name="otp_color_toolbar">#FFFFFF</color>
+    <color name="otp_color_toolbar_icon">@color/purple_700</color>
+    <color name="otp_color_primary">@color/purple_500</color>
+    <color name="otp_color_widget_active">@color/purple_500</color>
+
+
+</resources>

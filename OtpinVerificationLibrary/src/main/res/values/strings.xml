@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="app_name">OtpVerification</string>
+    <string name="verification">Verification</string>
+
+    <string name="enter_the_4_digit_otp_we_sent_to_you">Enter the 4 - Digit OTP we sent to You</string>
+    <string name="enter_the_6_digit_otp_we_sent_to_you">Enter the 6 - Digit OTP we sent to You</string>
+    <string name="didn_t_receive_any_code">Didn’t receive any code? </string>
+    <string name="resend">Resend</string>
+    <string name="continuee">Continue</string>
+    <string name="close">Close</string>
+
+</resources>

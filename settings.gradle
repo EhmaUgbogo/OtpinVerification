@@ -1,0 +1,3 @@
+include ':OtpinVerificationLibrary'
+include ':app'
+rootProject.name = "OtpinVerification"
