@@ -1,4 +1,4 @@
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/EhmaUgbogo/OtpVerificationLib?style=flat-square) ![GitHub top language](https://img.shields.io/github/languages/top/EhmaUgbogo/OtpVerificationLib?style=flat-square) ![GitHub all releases](https://img.shields.io/github/downloads/EhmaUgbogo/OtpVerificationLib/total) ![Twitter Follow](https://img.shields.io/twitter/follow/EhmaUgbogo?style=social)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/EhmaUgbogo/OtpinVerification?style=flat-square) ![GitHub top language](https://img.shields.io/github/languages/top/EhmaUgbogo/OtpinVerification?style=flat-square) ![GitHub all releases](https://img.shields.io/github/downloads/EhmaUgbogo/OtpinVerification/total) ![Twitter Follow](https://img.shields.io/twitter/follow/EhmaUgbogo?style=social)
 
 # OtpinVerification 
 
