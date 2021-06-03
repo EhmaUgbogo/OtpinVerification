@@ -40,7 +40,7 @@ ___
 
 ## Usage
 
-##1. OtpinVerification
+### 1. OtpinVerification
 
 ```kotlin
   
@@ -55,18 +55,14 @@ ___
 ```
 
 
-   SetText at runtime
+   
 ```kotlin
-
-  otpin.setOtpInputsText(yourOtpText)
-  
+  otpin.setOtpInputsText(yourOtpText) //SetText at runtime
 ```
 
-   Clear edittexts at runtime
+   
 ```kotlin
-
-  otpin.clearInputs()
- 
+  otpin.clearInputs() //Clear edittexts at runtime
 ```
 
    Add CountDown
@@ -91,7 +87,7 @@ ___
 
 
 
-##2. OtpinDialogCreator
+### 2. OtpinDialogCreator
 
 ```kotlin
   
@@ -124,29 +120,29 @@ ___
 
 
 
-   SetText at runtime
+   
 ```kotlin
 
-  otpDialog.setOtpInputsText(yourOtpText)
+  otpDialog.setOtpInputsText(yourOtpText) //SetText at runtime
   
 ```
 
-   Dismiss OtpinDialog
+   
 ```kotlin
 
-  otpDialog.dismissDialog()
+  otpDialog.dismissDialog() //Dismiss OtpinDialog
  
 ```
-   Show message via SnackBar or Toast
+   
 ```kotlin
 
- otpDialog.showMessage(msg, useSnackInsteadOfToast = true)
+ otpDialog.showMessage(msg, useSnackInsteadOfToast = true) //Show message via SnackBar or Toast
  
 ```
-   Hide otpDialog progressBar
+  
 ```kotlin
 
- otpDialog.hideProgress()
+ otpDialog.hideProgress() // Hide otpDialog progressBar
  
 ```
 
