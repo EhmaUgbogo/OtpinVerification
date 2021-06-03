@@ -4,18 +4,18 @@
 
 > OtpinVerification & Dialog
 
-### Description:
+## Description:
 Extremely useful library for validating EditText inputs whether by using just the validator (OtpinVerification) for your custom view or using library's extremely resizable & customisable dialog (OtpinDialogCreator)
 
 ___
 
-### Features:
+## Features:
 - OtpinVerification for validating your EditTexts from your own layout view
 - OtpinDialogCreator (library's customisable dialog)
 
 ___
 
-### Setup. 
+## Setup. 
 To get a Git project into your build: 
 
 1. Add the JitPack repository to you root build.gradle at the end of repositories:
@@ -38,9 +38,9 @@ dependencies {
 ```
 ___
 
-### Usage
+## Usage
 
-1. OtpinVerification
+##1. OtpinVerification
 
 ```kotlin
   
@@ -52,16 +52,27 @@ ___
   }
   
   
-  // SetText at runtime
+```
+
+
+   SetText at runtime
+```kotlin
+
   otpin.setOtpInputsText(yourOtpText)
   
-  // Clear edittexts at runtime
+```
+
+   Clear edittexts at runtime
+```kotlin
+
   otpin.clearInputs()
-  
-  
-  // Add count down listener
-  
-  otpin.startCountDown(minutes, object :OtpCountDownListener{
+ 
+```
+
+   Add CountDown
+```kotlin
+
+ otpin.startCountDown(minutes, object :OtpCountDownListener{
       override fun onCountDown(sec: Int, minutes: Int, timeFormat: String, onFinish: Boolean) {
             // your code here
             if(onFinish){
@@ -69,12 +80,18 @@ ___
             }
       }
  })
-  
-  
-  
+ 
 ```
 
-2. OtpinDialogCreator
+
+
+
+
+
+
+
+
+##2. OtpinDialogCreator
 
 ```kotlin
   
@@ -103,18 +120,34 @@ ___
             .start()
  
   
-    // SetText at runtime
-    otpDialog.setOtpInputsText(yourOtpText)
-    
-    // dismiss OtpinDialog
-    otpDialog.dismissDialog()
-    
-    // Show message via SnackBar or Toast
-    otpDialog.showMessage(msg, useSnackInsteadOfToast = true)
-    
-    // Hide progressBar
-    otpDialog.hideProgress()
+```
+
+
+
+   SetText at runtime
+```kotlin
+
+  otpDialog.setOtpInputsText(yourOtpText)
   
+```
+
+   Dismiss OtpinDialog
+```kotlin
+
+  otpDialog.dismissDialog()
+ 
+```
+   Show message via SnackBar or Toast
+```kotlin
+
+ otpDialog.showMessage(msg, useSnackInsteadOfToast = true)
+ 
+```
+   Hide otpDialog progressBar
+```kotlin
+
+ otpDialog.hideProgress()
+ 
 ```
 
 
