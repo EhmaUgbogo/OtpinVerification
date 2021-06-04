@@ -104,6 +104,7 @@ ___
             .setResendListener {resendClicked(it)}
             .setCancelListener { showToast("Task Cancelled") }
             .displayMode(OtpDisplay.FLOAT)
+	    .autoSubmitOnComplete()
             //.excludeResend()
             //.displayOnlyInputFields()
             //.theme(R.style.myOtpDialogTheme)
