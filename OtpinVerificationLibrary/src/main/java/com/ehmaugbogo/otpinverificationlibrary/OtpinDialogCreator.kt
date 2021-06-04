@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ import com.ehmaugbogo.otpinverificationlibrary.utils.*
 import com.ehmaugbogo.otpinverificationlibrary.utils.interfaces.ContinueClickListener
 import com.ehmaugbogo.otpinverificationlibrary.utils.interfaces.CancelListener
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.parcelize.Parcelize
 
 
 /**
@@ -33,6 +35,7 @@ import com.google.android.material.textfield.TextInputLayout
 class OtpinDialogCreator {
 
     companion object {
+        private var tempBuilder: Builder? = null
 
         /**
          * Use this to use OtpDialog in Activity Class
@@ -55,6 +58,7 @@ class OtpinDialogCreator {
         }
 
     }
+
 
     class Builder(private val activity: FragmentActivity) {
 
@@ -154,7 +158,7 @@ class OtpinDialogCreator {
         /**
          * Continue button event listener
          */
-        private var continueListener: ContinueClickListener? = null
+        private var continueListener: ((dialog: OtpDialog, otp: String) -> Unit)? = null
 
         /**
          * Resend button event listener
@@ -169,8 +173,7 @@ class OtpinDialogCreator {
         /**
          * Dialog dismiss event listener
          */
-        private var cancelListener: CancelListener? = null
-
+        private var cancelListener: (() -> Unit)? = null
 
 
         /**
@@ -179,7 +182,7 @@ class OtpinDialogCreator {
          *
          *  @param title
          */
-        fun title(title: String): Builder {
+        fun title(title: String?): Builder {
             this.title = title
             return this
         }
@@ -221,8 +224,8 @@ class OtpinDialogCreator {
          *  @param countDownMins
          */
         fun countDown(countDownMins: Long): Builder {
-            if(!displayOnlyInputFields)
-            this.countDownMins = countDownMins
+            if (!displayOnlyInputFields)
+                this.countDownMins = countDownMins
             return this
         }
 
@@ -331,11 +334,7 @@ class OtpinDialogCreator {
          * Sets the callback that will be called when the dialog is dismissed for any reason.
          */
         fun setContinueListener(listener: ((OtpDialog, String) -> Unit)): Builder {
-            this.continueListener = object : ContinueClickListener {
-                override fun onContinue(dialog: OtpDialog, otp: String) {
-                    listener.invoke(dialog, otp)
-                }
-            }
+            this.continueListener = listener
             return this
         }
 
@@ -360,11 +359,7 @@ class OtpinDialogCreator {
          * Sets the callback that will be called when the dialog is dismissed for any reason.
          */
         fun setCancelListener(listener: (() -> Unit)): Builder {
-            this.cancelListener = object : CancelListener {
-                override fun onDismiss() {
-                    listener.invoke()
-                }
-            }
+            this.cancelListener = listener
             return this
         }
 
@@ -373,10 +368,11 @@ class OtpinDialogCreator {
          * Start Otp Dialog
          */
         fun start(): OtpDialog {
-            val fm = if (fragment != null) fragment?.childFragmentManager!!
+            tempBuilder = this
+            val fm = if (fragment != null) fragment?.parentFragmentManager!!
             else activity.supportFragmentManager
 
-            return OtpDialogImpl(this).apply { show(fm, "OtpDialog") }
+            return OtpDialogImpl().apply { show(fm, "OtpDialog") }
         }
 
 
@@ -387,8 +383,7 @@ class OtpinDialogCreator {
          * @version 1.0
          * @since 17 Apr 2021
          */
-        internal class OtpDialogImpl(private val builder: Builder) : DialogFragment(), OtpDialog,
-            OtpCountDownOwner {
+        internal class OtpDialogImpl : DialogFragment(), OtpDialog, OtpCountDownOwner {
             private var binding: DialogOtpBinding by autoCleaned()
             private lateinit var otpin: OtpinVerification
             private var optInputsValidated = false
@@ -396,6 +391,8 @@ class OtpinDialogCreator {
             private var otpText = ""
             private var continueBtnText = ""
             private lateinit var toolBar: Toolbar
+            private val builder: Builder get() = tempBuilder!!
+
 
 
             override fun onCreate(savedInstanceState: Bundle?) {
@@ -411,6 +408,7 @@ class OtpinDialogCreator {
                 container: ViewGroup?,
                 savedInstanceState: Bundle?
             ): View? = inflater.inflate(R.layout.dialog_otp, container, false)
+
 
             override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
                 super.onViewCreated(view, savedInstanceState)
@@ -444,10 +442,11 @@ class OtpinDialogCreator {
                     }*/
                 }.also { toolBar = it }
 
-
-                builder.title?.let { titleTv.text = builder.title }
-                builder.customBtnText?.let { continueBtn.text = builder.customBtnText }
-                builder.logoId?.let { logoImg.apply { setImageResource(it); show() } }
+                builder.apply {
+                    title?.let { titleTv.text = it }
+                    customBtnText?.let { continueBtn.text = it }
+                    logoId?.let { logoImg.apply { setImageResource(it); show() } }
+                }
 
                 continueBtnText = continueBtn.textContent
                 continueBtn.setOnClickListener { proceed() }
@@ -500,22 +499,22 @@ class OtpinDialogCreator {
                 if (!optInputsValidated) return@apply
                 showProgress()
                 hideKeyboard()
-                builder.continueListener?.onContinue(this@OtpDialogImpl, otpText)
+                builder.continueListener?.invoke(this@OtpDialogImpl, otpText)
             }
 
-            override fun setOtpInputsText(otpText: String) {
-                otpin.setOtpInputsText(otpText)
+            override fun setOtpInputsText(otpText: String) = otpin.setOtpInputsText(otpText)
+
+            private fun onCancel() {
+                cancelCountDown(); builder.cancelListener?.invoke(); clearTemp()
+            }
+
+            override fun dismissDialog() {
+                cancelCountDown(); clearTemp(); dismiss()
             }
 
             private fun cancelCountDown() = otpin.cancelCountDown()
 
-            private fun onCancel() {
-                cancelCountDown(); builder.cancelListener?.onDismiss()
-            }
-
-            override fun dismissDialog() {
-                cancelCountDown(); dismiss()
-            }
+            private fun clearTemp() = null.also { tempBuilder = it }
 
             private fun resend() {
                 showProgress()
@@ -536,7 +535,6 @@ class OtpinDialogCreator {
             private fun showProgress() {
                 binding.apply {
                     progressBar.show()
-
                     continueBtn.text = ""
                     continueBtn.isEnabled = false
                     binding.resendTv.isEnabled = false
@@ -546,7 +544,6 @@ class OtpinDialogCreator {
             override fun hideProgress() {
                 binding.apply {
                     progressBar.hide()
-
                     continueBtn.text = continueBtnText
                     continueBtn.isEnabled = optInputsValidated
                     binding.resendTv.isEnabled = true
@@ -554,7 +551,8 @@ class OtpinDialogCreator {
             }
 
             override fun showMessage(msg: String, useSnackInsteadOfToast: Boolean) {
-                if (useSnackInsteadOfToast && builder.display != OtpDisplay.FLOAT) binding.resendTv.showSnackBar(msg)
+                if (useSnackInsteadOfToast && builder.display != OtpDisplay.FLOAT)
+                    binding.resendTv.showSnackBar(msg)
                 else showToast(msg)
             }
 
@@ -565,7 +563,6 @@ class OtpinDialogCreator {
             override fun onResume() {
                 super.onResume()
                 dialog?.apply {
-
                     when (builder.display) {
                         OtpDisplay.FLOAT -> makeFloatScreen()
                         OtpDisplay.FULL_SCREEN -> makeFullScreen()
@@ -589,14 +586,12 @@ class OtpinDialogCreator {
                 val width = ViewGroup.LayoutParams.MATCH_PARENT
                 val height = ViewGroup.LayoutParams.MATCH_PARENT
                 window?.setLayout(width, height)
-
             }
 
             private fun Dialog.animateWindow() {
                 val windowAnim = builder.windowAnim ?: R.style.SlideUp
                 if (!builder.disableWindowAnim) window?.setWindowAnimations(windowAnim)
             }
-
 
         }
 
