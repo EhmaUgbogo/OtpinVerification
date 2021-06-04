@@ -49,7 +49,8 @@ ___
   
   otpin = OtpinVerification(yourEditTexts, inputType) { validated, percent, otp ->
       // Your code here
-  }
+  }//.startCountDown(5, countDownListener)
+  
   
   otpin.setOtpInputsText(yourOtpText) //SetText at runtime
   
@@ -165,7 +166,7 @@ for example to change the title font & size, see yourTitleAppearance below.
 
 ```xml
 
-    <!-- your otpDialog style here -->
+    <!-- your otpDialog theme here -->
     <style name="myOtpDialogTheme" parent="OtpDialogTheme">
 	 <!-- precreated choice -->
         <item name="otpDialogBoxStyle">@style/BoxStyle.Underline</item>
