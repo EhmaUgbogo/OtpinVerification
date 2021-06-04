@@ -88,17 +88,16 @@ class MainActivity : AppCompatActivity() {
             // continueBtn.isEnabled = isVerified
             // optInputsValidated = isVerified
             // if (isVerified){ ... }
-        }
+        }.startCountDown(2, otpCountDownListener)
+    }
 
+    private val otpCountDownListener = object : OtpCountDownListener {
+        override fun onCountDown(sec: Int, minutes: Int, timeFormat: String, onFinish: Boolean) {
+            // your code here
+            if (onFinish) {
 
-        otp.startCountDown(2, object :OtpCountDownListener{
-            override fun onCountDown(sec: Int, minutes: Int, timeFormat: String, onFinish: Boolean) {
-                // your code here
-                if(onFinish){
-
-                }
             }
-        })
+        }
     }
 
     private fun Context.showToast(message: String) {
