@@ -105,7 +105,7 @@ ___
             .displayMode(OtpDisplay.FLOAT)
             //.excludeResend()
             //.displayOnlyInputFields()
-            //.theme(R.style.OtpStyle)
+            //.theme(R.style.myOtpDialogTheme)
             //.windowAnimation(R.style.yourWindowStyle)
             //.disableWindowAnimation()
             //.boxShape() // Use styles instead // Not available via runtime now
@@ -177,23 +177,24 @@ OtpinDialogCreator uses the following attr and styles under the hood with values
 
 
 ### Styling Yours
-So to style yours simply extend any of the styles above or supply yours.
-
+So to style yours simply create a style that extends otpDialogTheme then use any precreated styles or extend them for further customization.
 for example to change the title font & size, see yourTitleAppearance below.
 
 
 ```xml
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        ...
-        <!-- Customize OtpinDialog here like so. -->
-        <item name="otpDialogTitleTextAppearance">@style/yourTitleAppearance</item>
-        <item name="otpDialogBoxSpacing">12dp</item>
-        <!-- Etc, Etc -->
-    </style>
+    <!-- your otpDialog style here -->
+    <style name="myOtpDialogTheme" parent="OtpDialogTheme">
+	 <!-- precreated choice -->
+        <item name="otpDialogBoxStyle">@style/BoxStyle.Underline</item>
+        <item name="otpDialogBoxShape">@style/OtpBoxShape.Rounded</item>
+        <item name="otpDialogButtonStyle">@style/OtpDialogButtonStyle</item>
+	<item name="otpDialogBoxSpacing">12dp</item>
 
+	    <!-- Customize like so. -->
+        <item name="otpDialogTitleTextAppearance">@style/yourTitleAppearance</item>
+        
+    </style>
 
     <style name="yourTitleAppearance" parent="OtpDialogTitleAppearance">
         <item name="android:textSize">22sp</item>
@@ -202,6 +203,14 @@ for example to change the title font & size, see yourTitleAppearance below.
   
 ```
 
+```kotlin
+  
+  otpDialog = OtpinDialogCreator.with(this)
+            .title(title)
+            .theme(R.style.myOtpDialogTheme)
+            .start()
+  
+```
 
 ### Color
 For colors add these below to your color.xml
