@@ -51,19 +51,12 @@ ___
       // Your code here
   }
   
+  otpin.setOtpInputsText(yourOtpText) //SetText at runtime
+  
+  otpin.clearInputs() //Clear edittexts at runtime
   
 ```
 
-
-   
-```kotlin
-  otpin.setOtpInputsText(yourOtpText) //SetText at runtime
-```
-
-   
-```kotlin
-  otpin.clearInputs() //Clear edittexts at runtime
-```
 
    Add CountDown
 ```kotlin
