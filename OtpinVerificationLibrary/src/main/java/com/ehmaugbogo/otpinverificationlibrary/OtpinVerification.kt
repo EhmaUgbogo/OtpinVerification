@@ -200,7 +200,7 @@ class OtpinVerification(
         }
     }
 
-    fun startCountDown(mins: Long, listener: OtpCountDownListener) {
+    fun startCountDown(mins: Long, listener: OtpCountDownListener): OtpinVerification {
         val toMillis = TimeUnit.MINUTES.toMillis(mins) + 300
         countDownTimer = object : CountDownTimer(toMillis, TimeUnit.SECONDS.toMillis(1)) {
             override fun onTick(millisUntilFinished: Long) =
@@ -212,6 +212,7 @@ class OtpinVerification(
             }
         }
         countDownTimer?.start()
+        return this
     }
 
     fun cancelCountDown(){
