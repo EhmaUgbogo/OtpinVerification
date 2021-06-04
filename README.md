@@ -110,37 +110,19 @@ ___
             //.disableWindowAnimation()
             //.boxShape() // Use styles instead // Not available via runtime now
             .start()
+	    
+	    
+	   otpDialog.setOtpInputsText(yourOtpText) //SetText at runtime
+	   
+	   otpDialog.dismissDialog() //Dismiss OtpinDialog
+	   
+	   otpDialog.showMessage(msg, useSnackInsteadOfToast = true) //Show message via SnackBar or Toast
+	   
+	   otpDialog.hideProgress() // Hide otpDialog progressBar
  
   
 ```
 
-
-
-   
-```kotlin
-
-  otpDialog.setOtpInputsText(yourOtpText) //SetText at runtime
-  
-```
-
-   
-```kotlin
-
-  otpDialog.dismissDialog() //Dismiss OtpinDialog
- 
-```
-   
-```kotlin
-
- otpDialog.showMessage(msg, useSnackInsteadOfToast = true) //Show message via SnackBar or Toast
- 
-```
-  
-```kotlin
-
- otpDialog.hideProgress() // Hide otpDialog progressBar
- 
-```
 
 
 
@@ -204,7 +186,7 @@ for example to change the title font & size, see yourTitleAppearance below.
 ```
 
 ```kotlin
-  
+  // Apply your theme
   otpDialog = OtpinDialogCreator.with(this)
             .title(title)
             .theme(R.style.myOtpDialogTheme)
