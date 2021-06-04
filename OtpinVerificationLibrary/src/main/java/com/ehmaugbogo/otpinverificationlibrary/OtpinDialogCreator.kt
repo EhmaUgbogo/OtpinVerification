@@ -136,6 +136,11 @@ class OtpinDialogCreator {
         private var excludeResend = false
 
         /**
+         * indicate if onCompleteListener should be called when all otpFields are filled
+         */
+        private var autoSubmitOnComplete = false
+
+        /**
          * Include your own theme
          *
          * should extend from OtpFullScreenDialog
@@ -301,6 +306,14 @@ class OtpinDialogCreator {
         }
 
         /**
+         * Calls onCompleteListener when all otpFields are filled
+         */
+        fun autoSubmitOnComplete(): Builder {
+            this.autoSubmitOnComplete = true
+            return this
+        }
+
+        /**
          * Set your own theme that extends from OtpDialogTheme
          *
          *  @param theme
@@ -376,6 +389,7 @@ class OtpinDialogCreator {
         }
 
 
+
         /**
          * Create OtpDialog Object
          *
@@ -421,11 +435,14 @@ class OtpinDialogCreator {
 
                 val optInputFields = inputFields()
                 val inputType = builder.inputType
+                val autoSubmitOnComplete = builder.autoSubmitOnComplete
 
                 otpin = OtpinVerification(optInputFields, inputType) { verified, percent, otp ->
                     otpText = otp
-                    continueBtn.isEnabled = verified
                     optInputsValidated = verified
+                    continueBtn.isEnabled = verified
+
+                    if(autoSubmitOnComplete && verified) proceed()
                 }
 
                 startCountDown()
@@ -446,6 +463,7 @@ class OtpinDialogCreator {
                     title?.let { titleTv.text = it }
                     customBtnText?.let { continueBtn.text = it }
                     logoId?.let { logoImg.apply { setImageResource(it); show() } }
+                    //continueBtn.isVisible = !autoSubmitOnComplete
                 }
 
                 continueBtnText = continueBtn.textContent
