@@ -129,7 +129,7 @@ ___
 
 
 ### Styling Used Underneath
-OtpinDialogCreator uses the following attr and styles under the hood with values that you can easily adjut to suit your brand
+OtpinDialogCreator uses the following attr and styles under the hood with values that you can easily adjust to suit your brand
 
 ```xml
     <!-- TextAppearance-->
@@ -161,7 +161,7 @@ OtpinDialogCreator uses the following attr and styles under the hood with values
 
 
 ### Styling Yours
-So to style yours simply create a style that extends otpDialogTheme then use any precreated styles or extend them for further customization.
+So to style yours simply create a theme that extends otpDialogTheme then use any precreated styles or extend them for further customization.
 for example to change the title font & size, see yourTitleAppearance below.
 
 
