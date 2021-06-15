@@ -83,8 +83,12 @@ ___
 
 ### 2. OtpinDialogCreator
 
-![Image Sample1](https://drive.google.com/file/d/1-LSqDxyYmxlNRmoo18nY1fZaJOM3qteL/view)
-
+![Sample1](https://user-images.githubusercontent.com/43527671/122119774-7cebc180-ce21-11eb-8064-06dc23b1238c.png)
+![Sample2](https://user-images.githubusercontent.com/43527671/122120148-f2f02880-ce21-11eb-98e2-c077985d4d8d.png)
+![Sample3](https://user-images.githubusercontent.com/43527671/122120235-10bd8d80-ce22-11eb-8515-19c33b67b414.png)
+![Sample4](https://user-images.githubusercontent.com/43527671/122120293-216e0380-ce22-11eb-88c5-0e6aa0d14657.png)
+![Sample5](https://user-images.githubusercontent.com/43527671/122120347-3185e300-ce22-11eb-97d7-1056d1c4f2ab.png)
+![Sample6](https://user-images.githubusercontent.com/43527671/122120404-46627680-ce22-11eb-9199-b14bc9e6a7fd.png)
 
 
 
