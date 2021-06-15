@@ -4,7 +4,7 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.os.Parcelable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,10 +18,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.ehmaugbogo.otpinverificationlibrary.databinding.DialogOtpBinding
 import com.ehmaugbogo.otpinverificationlibrary.utils.*
-import com.ehmaugbogo.otpinverificationlibrary.utils.interfaces.ContinueClickListener
-import com.ehmaugbogo.otpinverificationlibrary.utils.interfaces.CancelListener
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
-import kotlinx.parcelize.Parcelize
 
 
 /**
@@ -36,6 +34,7 @@ class OtpinDialogCreator {
 
     companion object {
         private var tempBuilder: Builder? = null
+        private var temp: OtpDialog? = null
 
         /**
          * Use this to use OtpDialog in Activity Class
@@ -123,7 +122,7 @@ class OtpinDialogCreator {
         /**
          * Determine if dialog should be floating or fullScreen
          */
-        private var display: OtpDisplay = OtpDisplay.FULL_SCREEN
+        private var display: OtpDisplay = OtpDisplay.FullScreen()
 
         /**
          * Displays only InputFields
@@ -139,6 +138,12 @@ class OtpinDialogCreator {
          * indicate if onCompleteListener should be called when all otpFields are filled
          */
         private var autoSubmitOnComplete = false
+
+        /**
+         * Associated with autoSubmitOnComplete
+         * indicate if ContinueBtn should be hidden when autoSubmitOnComplete method is called
+         */
+        private var hideContinueBtn = false
 
         /**
          * Include your own theme
@@ -307,9 +312,13 @@ class OtpinDialogCreator {
 
         /**
          * Calls onCompleteListener when all otpFields are filled
+         * @param hideContinueBtn which indicate if ContinueBtn should be hidden
+         * when autoSubmitOnComplete method is called
+         *
          */
-        fun autoSubmitOnComplete(): Builder {
+        fun autoSubmitOnComplete(hideContinueBtn: Boolean = false): Builder {
             this.autoSubmitOnComplete = true
+            this.hideContinueBtn = hideContinueBtn
             return this
         }
 
@@ -381,11 +390,13 @@ class OtpinDialogCreator {
          * Start Otp Dialog
          */
         fun start(): OtpDialog {
+            if(temp != null) return temp as OtpDialog
             tempBuilder = this
+
             val fm = if (fragment != null) fragment?.parentFragmentManager!!
             else activity.supportFragmentManager
 
-            return OtpDialogImpl().apply { show(fm, "OtpDialog") }
+            return OtpDialogImpl().apply { show(fm, "OtpDialog"); temp = this }
         }
 
 
@@ -398,6 +409,7 @@ class OtpinDialogCreator {
          * @since 17 Apr 2021
          */
         internal class OtpDialogImpl : DialogFragment(), OtpDialog, OtpCountDownOwner {
+            private val TAG = "OtpinDialogCreator"
             private var binding: DialogOtpBinding by autoCleaned()
             private lateinit var otpin: OtpinVerification
             private var optInputsValidated = false
@@ -405,7 +417,9 @@ class OtpinDialogCreator {
             private var otpText = ""
             private var continueBtnText = ""
             private lateinit var toolBar: Toolbar
+
             private val builder: Builder get() = tempBuilder!!
+            private val isFloating get() = builder.display == OtpDisplay.Float
 
 
 
@@ -413,7 +427,8 @@ class OtpinDialogCreator {
                 super.onCreate(savedInstanceState)
 
                 isCancelable = builder.cancelable
-                val theme = builder.dialogTheme ?: R.style.OtpDialogTheme
+                val defaultTheme = if(isFloating) R.style.OtpDialogThemeFloating else R.style.OtpDialogTheme
+                val theme = builder.dialogTheme ?: defaultTheme
                 setStyle(STYLE_NORMAL, theme)
             }
 
@@ -463,7 +478,7 @@ class OtpinDialogCreator {
                     title?.let { titleTv.text = it }
                     customBtnText?.let { continueBtn.text = it }
                     logoId?.let { logoImg.apply { setImageResource(it); show() } }
-                    //continueBtn.isVisible = !autoSubmitOnComplete
+                    continueBtn.isVisible = !hideContinueBtn
                 }
 
                 continueBtnText = continueBtn.textContent
@@ -532,7 +547,7 @@ class OtpinDialogCreator {
 
             private fun cancelCountDown() = otpin.cancelCountDown()
 
-            private fun clearTemp() = null.also { tempBuilder = it }
+            private fun clearTemp() = null.also { tempBuilder = it; temp = it }
 
             private fun resend() {
                 showProgress()
@@ -556,6 +571,8 @@ class OtpinDialogCreator {
                     continueBtn.text = ""
                     continueBtn.isEnabled = false
                     binding.resendTv.isEnabled = false
+
+                    if(builder.hideContinueBtn) continueBtn.hideAtPosition()
                 }
             }
 
@@ -565,13 +582,18 @@ class OtpinDialogCreator {
                     continueBtn.text = continueBtnText
                     continueBtn.isEnabled = optInputsValidated
                     binding.resendTv.isEnabled = true
+
+                    continueBtn.isVisible = !builder.hideContinueBtn
                 }
             }
 
             override fun showMessage(msg: String, useSnackInsteadOfToast: Boolean) {
-                if (useSnackInsteadOfToast && builder.display != OtpDisplay.FLOAT)
-                    binding.resendTv.showSnackBar(msg)
+                if (useSnackInsteadOfToast && builder.display is OtpDisplay.FullScreen) showSnackBar(msg)
                 else showToast(msg)
+            }
+
+            private fun showSnackBar(msg: String, length: Int = Snackbar.LENGTH_LONG) {
+                binding.resendTv.showSnackBar(msg, length)
             }
 
             private fun showToast(msg: String) {
@@ -582,8 +604,8 @@ class OtpinDialogCreator {
                 super.onResume()
                 dialog?.apply {
                     when (builder.display) {
-                        OtpDisplay.FLOAT -> makeFloatScreen()
-                        OtpDisplay.FULL_SCREEN -> makeFullScreen()
+                        is OtpDisplay.Float -> makeFloatScreen()
+                        is OtpDisplay.FullScreen -> makeFullScreen()
                     }
 
                     if (builder.displayOnlyInputFields) binding.apply {
@@ -598,13 +620,33 @@ class OtpinDialogCreator {
             private fun Dialog.makeFloatScreen() {
                 hideViews(toolBar)
                 window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+                if (window?.isFloating == false){
+                    val msg = "Please extend OtpDialogTheme & add otpDialogFloating = true to get a floating dialog"
+                    showSnackBar(msg, Snackbar.LENGTH_INDEFINITE)
+                    Log.d(TAG, msg)
+                }
             }
 
             private fun Dialog.makeFullScreen() {
                 val width = ViewGroup.LayoutParams.MATCH_PARENT
                 val height = ViewGroup.LayoutParams.MATCH_PARENT
                 window?.setLayout(width, height)
+
+                val showToolBar = (builder.display as OtpDisplay.FullScreen).showToolbar
+                if(showToolBar) binding.parentCard.normalizeCornerRadius()
+                toolBar.isVisible = showToolBar
+
+
+                if(builder.logoId == null && !showToolBar) binding.logoImg.hideAtPosition() // top Space provision needed by title when no logo
+
+                if (window?.isFloating == true){
+                    val msg = "Please extend OtpDialogTheme & add otpDialogFloating = false to get a proper status bar"
+                    showToast(msg); Log.d(TAG, msg)
+                }
+
             }
+
 
             private fun Dialog.animateWindow() {
                 val windowAnim = builder.windowAnim ?: R.style.SlideUp

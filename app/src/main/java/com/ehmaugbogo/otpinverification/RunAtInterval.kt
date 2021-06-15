@@ -15,8 +15,12 @@ import java.util.concurrent.TimeUnit
  */
 
 
-fun FragmentActivity.mockApiCall(onSuccess: ()-> Unit){
-    runAtInterval(3) {
+fun FragmentActivity.mockApiCall(intervalInSec: Long = 3L, onSuccess: ()-> Unit){
+    if(intervalInSec == 0L){
+        onSuccess.invoke(); return
+    }
+
+    runAtInterval(intervalInSec) {
         onSuccess.invoke()
         false
     }

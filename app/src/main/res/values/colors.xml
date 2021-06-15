@@ -8,11 +8,20 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+
+    // Added for new xml inclusion
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#001449</color>
+    <color name="colorAccent">#001B60</color>
+    <color name="textcolor">#161616</color>
+
+
     // Otp Dialog overriding colors
-    <color name="otp_color_toolbar">#FFFFFF</color>
-    <color name="otp_color_toolbar_icon">@color/purple_700</color>
-    <color name="otp_color_primary">@color/purple_500</color>
-    <color name="otp_color_widget_active">@color/purple_500</color>
+    <color name="otp_color_status_bar">@color/colorPrimaryDark</color>
+    <color name="otp_color_toolbar">#EAEAEA</color> <!--white-->
+    <color name="otp_color_toolbar_icon">@color/colorPrimaryDark</color>
+    <color name="otp_color_primary">@color/colorAccent</color><!--purple_500-->
+    <color name="otp_color_widget_active">@color/colorAccent</color> <!--purple_500-->
 
 
 </resources>

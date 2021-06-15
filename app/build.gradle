@@ -58,4 +58,7 @@ dependencies {
     // using OtpDialog android library as module dependency
     implementation project(path: ':OtpinVerificationLibrary')
 
+    // Rounded ImageView
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
 }

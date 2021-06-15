@@ -33,6 +33,8 @@
         <attr name="otpDialogLayoutPadding" format="dimension" />
         <attr name="otpDialogLayoutCornerRadius" format="dimension" />
 
+        <!-- Layout -->
+        <attr name="otpDialogIsFloating" format="boolean" />
 
 
         <!--<attr name="otpDialogTitleTextFontFamily" format="string" />

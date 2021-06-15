@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:id="@+id/parentCard"
     app:cardCornerRadius="?otpDialogLayoutCornerRadius">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -35,10 +36,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minWidth="100dp"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
             android:padding="?otpDialogLayoutPadding"
             android:focusableInTouchMode="true"
-            android:layout_gravity="center"
+            android:layout_gravity="top|center"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <ImageView
@@ -46,6 +49,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 tools:src="@drawable/ic_verified"
+                android:layout_marginTop="16dp"
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -57,7 +61,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:layout_goneMarginTop="0dp"
                 android:text="@string/verification"
                 android:maxLines="1"
                 android:ellipsize="end"

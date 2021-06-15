@@ -16,6 +16,9 @@ import androidx.annotation.XmlRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.ehmaugbogo.otpinverificationlibrary.R
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.shape.CornerFamily
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
@@ -79,6 +82,14 @@ internal fun View.hide() {
     isVisible = false
 }
 
+fun View.hideAtPosition() {
+    visibility = View.INVISIBLE
+}
+
+fun View.isVisibleAtPosition(value: Boolean) {
+    visibility = if(value) View.VISIBLE else View.INVISIBLE
+}
+
 internal fun View.show() {
     isVisible = true
 }
@@ -100,5 +111,20 @@ internal fun Context.showToast(message: String, length: Int = Toast.LENGTH_SHORT
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
+internal fun MaterialCardView.normalizeCornerRadius() {
+    this.apply {
+        val radius = resources.getDimension(R.dimen.default_corner_radius)
+
+        val shape = shapeAppearanceModel.toBuilder()
+            .setTopLeftCorner(CornerFamily.ROUNDED, radius)
+            .setTopRightCorner(CornerFamily.ROUNDED, radius)
+            .setBottomRightCorner(CornerFamily.ROUNDED, radius)
+            .setBottomLeftCornerSize(0f)
+            .setAllCornerSizes(0f)
+            .build()
+
+        shapeAppearanceModel = shape
+    }
+}
 
  

@@ -28,12 +28,17 @@ interface OtpCountDownListener {
 }
 
 
-enum class OtpDisplay {
+/*enum class OtpDisplay {
     FLOAT, FULL_SCREEN
+}*/
+
+sealed class OtpDisplay {
+    object Float: OtpDisplay()
+    data class FullScreen(val showToolbar: Boolean = false): OtpDisplay()
 }
 
 enum class OtpFields(val value: Int) {
-    THREE(3), FOUR(4), FIVE(5), SIX(6)
+    TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6)
 }
 
 enum class OtpInputType {

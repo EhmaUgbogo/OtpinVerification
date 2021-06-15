@@ -8,6 +8,7 @@
     <dimen name="margin_standard">16dp</dimen>
     <dimen name="margin_small">8dp</dimen>
 
+    <dimen name="default_corner_radius">0dp</dimen>
 
 
 </resources>

@@ -32,8 +32,8 @@ buildscript {
 
 
         // OtpDialog Library Info
-        libVersionCode = 2
-        libVersionName = '1.0.2'
+        libVersionCode = 3
+        libVersionName = '1.0.3'
 
     }
 }

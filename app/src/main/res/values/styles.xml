@@ -11,4 +11,127 @@
 
 
     </style>
+
+
+
+    <!--******************** Outline Rounded **********************-->
+
+    <style name="myOtpDialogThemeJustBoxRounded" parent="myOtpDialogThemeFloatingRound">
+        <item name="otpDialogLayoutPadding">0dp</item>
+    </style>
+
+    <style name="myOtpDialogThemeFloatingRound" parent="myOtpDialogThemeRounded">
+        <item name="otpDialogIsFloating">true</item>
+    </style>
+
+    <style name="myOtpDialogThemeRounded" parent="myOtpDialogThemeNormal">
+        <item name="otpDialogLayoutCornerRadius">25dp</item>
+        <item name="otpDialogButtonStyle">@style/buttonStyleRounded</item>
+        <item name="otpDialogBoxShape">@style/OtpBoxShape.Rounded</item>
+    </style>
+    <style name="buttonStyleRounded" parent="OtpDialogButtonStyle.Rounded">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <!--****************************************************************-->
+
+    <!--******************** Outline Cut **********************-->
+
+    <style name="myOtpDialogThemeJustBoxCut" parent="myOtpDialogThemeFloatingCut">
+        <item name="otpDialogLayoutPadding">0dp</item>
+    </style>
+
+    <style name="myOtpDialogThemeFloatingCut" parent="myOtpDialogThemeCut">
+        <item name="otpDialogIsFloating">true</item>
+    </style>
+
+    <style name="myOtpDialogThemeCut" parent="myOtpDialogThemeNormal">
+        <item name="otpDialogLayoutCornerRadius">2dp</item>
+        <item name="otpDialogButtonStyle">@style/buttonStyleCut</item>
+        <item name="otpDialogBoxShape">@style/OtpBoxShape.Cut</item>
+    </style>
+
+    <style name="buttonStyleCut" parent="OtpDialogButtonStyle">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="shapeAppearanceOverlay">@style/ButtonShape</item>
+    </style>
+
+    <style name="ButtonShape">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">32dp</item>
+    </style>
+
+    <!--****************************************************************-->
+
+    <!--******************** Outline Normal **********************-->
+
+    <style name="myOtpDialogThemeJustBoxNormal" parent="myOtpDialogThemeFloatingNormal">
+        <item name="otpDialogLayoutPadding">0dp</item>
+    </style>
+
+    <style name="myOtpDialogThemeFloatingNormal" parent="myOtpDialogThemeNormal">
+        <item name="otpDialogIsFloating">true</item>
+    </style>
+
+    <style name="myOtpDialogThemeNormal" parent="myOtpDialogTheme">
+        <item name="otpDialogBoxStyle">@style/BoxStyle.Outline</item>
+    </style>
+
+    <!--****************************************************************-->
+
+
+
+
+    <!-- Default As Should Be Used In Your Application -->
+    <style name="myOtpDialogThemeJustBox" parent="myOtpDialogThemeFloating">
+        <item name="otpDialogLayoutPadding">0dp</item>
+    </style>
+
+    <style name="myOtpDialogThemeFloating" parent="myOtpDialogTheme">
+        <item name="otpDialogIsFloating">true</item>
+    </style>
+
+    <style name="myOtpDialogTheme" parent="OtpDialogTheme">
+        <!-- pre-created choice -->
+        <item name="otpDialogBoxStyle">@style/BoxStyle.Underline</item>
+        <item name="otpDialogBoxSpacing">12dp</item>
+
+        <!-- Customize like so. -->
+        <item name="otpDialogTitleTextAppearance">@style/titleAppearance</item>
+        <item name="otpDialogSubtitleTextAppearance">@style/subTitleAppearance</item>
+        <item name="otpDialogCounterTextAppearance">@style/counterTextAppearance</item>
+        <item name="otpDialogResendTextAppearance">@style/resendTextAppearance</item>
+        <item name="otpDialogButtonStyle">@style/buttonStyle</item>
+        <item name="otpDialogBoxShape">@style/boxShape</item>
+
+        <item name="otpDialogLayoutCornerRadius">12dp</item>
+
+    </style>
+
+    <style name="titleAppearance" parent="OtpDialogTitleAppearance">
+        <item name="fontFamily">@font/poppins_black</item>
+    </style>
+
+    <style name="subTitleAppearance" parent="OtpDialogSubTitleAppearance">
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="counterTextAppearance" parent="OtpDialogCounterTextAppearance">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="resendTextAppearance" parent="OtpDialogResendTextAppearance">
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="buttonStyle" parent="OtpDialogButtonStyle">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <style name="boxShape" parent="OtpBoxShape.Rounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
 </resources>
