@@ -117,7 +117,7 @@ ___
             .setResendListener {resendClicked(it)}
             .setCancelListener { showToast("Task Cancelled") }
             //.displayMode(OtpDisplay.FullScreen(showToolbar = true))
-	    .autoSubmitOnComplete(hideContinueBtn = false)
+	    //.autoSubmitOnComplete(hideContinueBtn = false)
             //.excludeResend()
             //.displayOnlyInputFields()
             //.theme(R.style.myOtpDialogTheme)
