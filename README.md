@@ -33,7 +33,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.EhmaUgbogo:OtpinVerification:1.0.2'
+    implementation 'com.github.EhmaUgbogo:OtpinVerification:1.0.3'
 }
 ```
 ___
@@ -83,7 +83,15 @@ ___
 
 ### 2. OtpinDialogCreator
 
-![Image Sample1](https://drive.google.com/file/d/1HUDFv9vAqF4empGn9VHoIDIJXo9rrFJ_/view?usp=drivesdk)
+![Image Sample1](https://drive.google.com/file/d/1-LSqDxyYmxlNRmoo18nY1fZaJOM3qteL/view?usp=sharing)
+![Image Sample2](https://drive.google.com/file/d/1JrafmJ668w_d2AB6NZn4MGeKOGVolv2W/view?usp=sharing)
+![Image Sample3](https://drive.google.com/file/d/1-2ywnJ8F0E37tDpLLr3h1HYXID1Nkh2p/view?usp=sharing)
+![Image Sample4](https://drive.google.com/file/d/1-4oVFRTaWUspHItvUFRpQ9DP9IbBKwn_/view?usp=sharing)
+![Image Sample5](https://drive.google.com/file/d/1KRbyDl01s9_0iQ-IEe4ffjiTZM_H9KC_/view?usp=sharing)
+![Image Sample6](https://drive.google.com/file/d/1-BX5WQVX6tbTzjEII6F63Pdt7l6Leymz/view?usp=sharing)
+
+
+
 
 
 ```kotlin
@@ -93,18 +101,18 @@ ___
   otpDialog = OtpinDialogCreator.with(this)
             //.title(title)
             //.customSubtitle("Please provide your card cvv")
-            .customBtnText("Submit")
+            //.customBtnText("Submit")
             //.logo(R.drawable.ic_logo)
-            .cancelable(false)
-            .otpFields(OtpFields.THREE)
-            .inputType(OtpInputType.DIGIT)
+            //.cancelable(false)
+            //.otpFields(OtpFields.THREE)
+            //.inputType(OtpInputType.DIGIT)
             .countDown(5)
             .setCountDownFinishListener { showToast("Count Down completed") }
             .setContinueListener { otpDialog, otp -> continueClicked(otpDialog, otp) }
             .setResendListener {resendClicked(it)}
             .setCancelListener { showToast("Task Cancelled") }
-            .displayMode(OtpDisplay.FLOAT)
-	    .autoSubmitOnComplete()
+            //.displayMode(OtpDisplay.FullScreen(showToolbar = true))
+	    .autoSubmitOnComplete(hideContinueBtn = false)
             //.excludeResend()
             //.displayOnlyInputFields()
             //.theme(R.style.myOtpDialogTheme)
@@ -137,6 +145,9 @@ OtpinDialogCreator uses the following attr and styles under the hood with values
     <item name="otpDialogSubtitleTextAppearance">@style/OtpDialogSubTitleAppearance</item>
     <item name="otpDialogCounterTextAppearance">@style/OtpDialogCounterTextAppearance</item>
     <item name="otpDialogResendTextAppearance">@style/OtpDialogResendTextAppearance</item>
+    <!-- Layout -->
+    <item name="otpDialogLayoutPadding">4dp</item>
+    <item name="otpDialogLayoutCornerRadius">16dp</item>
     <!-- Box Setup -->
     <item name="otpDialogBoxWidth">48dp</item>
     <item name="otpDialogBoxHeight">48dp</item>
@@ -156,6 +167,8 @@ OtpinDialogCreator uses the following attr and styles under the hood with values
     <!-- Layout -->
     <item name="otpDialogLayoutPadding">4dp</item>
     <item name="otpDialogLayoutCornerRadius">16dp</item>
+    <!-- Window -->
+    <item name="otpDialogIsFloating">false</item>
   
 ```
 
@@ -167,7 +180,12 @@ for example to change the title font & size, see yourTitleAppearance below.
 
 ```xml
 
-    <!-- your otpDialog theme here -->
+    <!-- your floating screen otpDialog theme -->
+    <style name="myOtpDialogThemeFloating" parent="myOtpDialogTheme">
+        <item name="otpDialogIsFloating">true</item>
+    </style>
+
+    <!-- your fullscreen otpDialog theme -->
     <style name="myOtpDialogTheme" parent="OtpDialogTheme">
 	 <!-- precreated choice -->
         <item name="otpDialogBoxStyle">@style/BoxStyle.Underline</item>
@@ -176,22 +194,36 @@ for example to change the title font & size, see yourTitleAppearance below.
 	<item name="otpDialogBoxSpacing">12dp</item>
 
 	    <!-- Customize like so. -->
-        <item name="otpDialogTitleTextAppearance">@style/yourTitleAppearance</item>
-        
+        <item name="otpDialogTitleTextAppearance">@style/titleAppearance</item>
+	<item name="otpDialogButtonStyle">@style/buttonStyle</item>
+
     </style>
 
-    <style name="yourTitleAppearance" parent="OtpDialogTitleAppearance">
-        <item name="android:textSize">22sp</item>
-        <item name="fontFamily">@font/montserrat_black</item>
+    <style name="titleAppearance" parent="OtpDialogTitleAppearance">
+        <item name="fontFamily">@font/poppins_black</item>
     </style>
+
+    <style name="buttonStyle" parent="OtpDialogButtonStyle">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- See App for more styling examples -->
   
 ```
 
 ```kotlin
-  // Apply your theme
+  // Apply your fullscreen theme
   otpDialog = OtpinDialogCreator.with(this)
             .title(title)
             .theme(R.style.myOtpDialogTheme)
+            .start()
+	    
+  // Apply your floating screen theme
+  otpDialog = OtpinDialogCreator.with(this)
+            .title(title)
+	    .displayMode(OtpDisplay.Float)
+            .theme(R.style.myOtpDialogThemeFloating)
             .start()
   
 ```
