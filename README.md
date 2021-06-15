@@ -33,7 +33,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.EhmaUgbogo:OtpinVerification:1.0.1'
+    implementation 'com.github.EhmaUgbogo:OtpinVerification:1.0.2'
 }
 ```
 ___
@@ -104,6 +104,7 @@ ___
             .setResendListener {resendClicked(it)}
             .setCancelListener { showToast("Task Cancelled") }
             .displayMode(OtpDisplay.FLOAT)
+	    .autoSubmitOnComplete()
             //.excludeResend()
             //.displayOnlyInputFields()
             //.theme(R.style.myOtpDialogTheme)
@@ -128,7 +129,7 @@ ___
 
 
 ### Styling Used Underneath
-OtpinDialogCreator uses the following attr and styles under the hood with values that you can easily adjut to suit your brand
+OtpinDialogCreator uses the following attr and styles under the hood with values that you can easily adjust to suit your brand
 
 ```xml
     <!-- TextAppearance-->
@@ -160,7 +161,7 @@ OtpinDialogCreator uses the following attr and styles under the hood with values
 
 
 ### Styling Yours
-So to style yours simply create a style that extends otpDialogTheme then use any precreated styles or extend them for further customization.
+So to style yours simply create a theme that extends otpDialogTheme then use any precreated styles or extend them for further customization.
 for example to change the title font & size, see yourTitleAppearance below.
 
 
