@@ -83,12 +83,12 @@ ___
 
 ### 2. OtpinDialogCreator
 
-![Image Sample1](https://drive.google.com/file/d/1-LSqDxyYmxlNRmoo18nY1fZaJOM3qteL/view?usp=sharing)
-![Image Sample2](https://drive.google.com/file/d/1JrafmJ668w_d2AB6NZn4MGeKOGVolv2W/view?usp=sharing)
-![Image Sample3](https://drive.google.com/file/d/1-2ywnJ8F0E37tDpLLr3h1HYXID1Nkh2p/view?usp=sharing)
-![Image Sample4](https://drive.google.com/file/d/1-4oVFRTaWUspHItvUFRpQ9DP9IbBKwn_/view?usp=sharing)
-![Image Sample5](https://drive.google.com/file/d/1KRbyDl01s9_0iQ-IEe4ffjiTZM_H9KC_/view?usp=sharing)
-![Image Sample6](https://drive.google.com/file/d/1-BX5WQVX6tbTzjEII6F63Pdt7l6Leymz/view?usp=sharing)
+![Image Sample1](https://drive.google.com/file/d/1-LSqDxyYmxlNRmoo18nY1fZaJOM3qteL/view)
+![Image Sample2](https://drive.google.com/file/d/1JrafmJ668w_d2AB6NZn4MGeKOGVolv2W/view)
+![Image Sample3](https://drive.google.com/file/d/1-2ywnJ8F0E37tDpLLr3h1HYXID1Nkh2p/view)
+![Image Sample4](https://drive.google.com/file/d/1-4oVFRTaWUspHItvUFRpQ9DP9IbBKwn_/view)
+![Image Sample5](https://drive.google.com/file/d/1KRbyDl01s9_0iQ-IEe4ffjiTZM_H9KC_/view)
+![Image Sample6](https://drive.google.com/file/d/1-BX5WQVX6tbTzjEII6F63Pdt7l6Leymz/view)
 
 
 
