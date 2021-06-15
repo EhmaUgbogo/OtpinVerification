@@ -40,7 +40,7 @@ ___
 
 ## Usage
 
-### 1. OtpinVerification (Use with your own custom layout view)
+### 1. OtpinVerification (Use to power your own custom layout view)
 
 ```kotlin
   
