@@ -165,7 +165,7 @@ OtpinDialogCreator uses the following attr and styles under the hood with values
     <!-- Box EditText Style-->
     <item name="otpDialogBoxEditTextStyle">@style/BoxEditTextStyle</item>
     <!-- Button Style-->
-    <item name="otpDialogButtonStyle">@style/OtpDialogButtonStyle.Rounded</item> <!--OtpDialogButtonStyle, OtpDialogButtonStyle.Round -->
+    <item name="otpDialogButtonStyle">@style/OtpDialogButtonStyle.Rounded</item> <!--OtpDialogButtonStyle, OtpDialogButtonStyle.Rounded -->
     <!-- Toolbar -->
     <item name="otpDialogToolbarColor">@color/otp_color_toolbar</item>
     <item name="otpDialogToolbarIconColor">@color/otp_color_toolbar_icon</item>
