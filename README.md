@@ -180,7 +180,7 @@ OtpinDialogCreator uses the following attr and styles under the hood with values
 
 ### Styling Yours
 So to style yours simply create a theme that extends otpDialogTheme then use any precreated styles or extend them for further customization.
-for example to change the title font & size, see yourTitleAppearance below.
+for example to change the title font & size, see titleAppearance and buttonStyle below.
 
 
 ```xml
